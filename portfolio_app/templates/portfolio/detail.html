@@ -1,0 +1,111 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Petyal</title>
+	<!-- Иконка-->
+	<link rel="icon" href="{% static 'portfolio/Logo.png' %}" />
+	<!-- Подгрузка звездочки-->
+	<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	<!-- Гугл шрифты-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+	<!-- СSS, Bootstrap, Fancybox-->
+	<link href="{% static 'portfolio/styles.css' %}" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<link href="{% static 'portfolio/js/jquery.fancybox.min.css' %}" rel="stylesheet">
+	<script src="{% static 'portfolio/js/jquery.fancybox.min.js' %}"></script>
+	<!-- Стили для галереи-->
+	<style>
+	.thumb img {
+	            -webkit-filter: grayscale(0);
+	            filter: none;
+	            border-radius: 5px;
+	            background-color: #fff;
+	            border: 1px solid #ddd;
+	            padding: 5px;
+	        }
+	
+	        .thumb img:hover {
+	            -webkit-filter: grayscale(1);
+	            filter: grayscale(1);
+	        }
+	
+	        .thumb {
+	            padding: 5px;
+	        }
+	</style>
+</head>
+
+<body>
+  <!-- Навигационная панель-->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="/">Petyal</a>
+        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Главная страница</a>
+    </div>
+  </nav>
+  <!-- Галерея -->
+	<main role="main">
+		<div class="container mt-5">
+			<div class="row center-block mt-5">
+				<div class="col-lg-3 col-md-4 col-6 thumb mx-auto mt-5">
+					<div class="mt-4"> <a data-fancybox="gallery" href="{{ project_detail.first_image_detail.url }}">
+                        <img class="img-fluid" src="{{ project_detail.first_image_detail_tumb.url }}" alt="...">
+                    </a> </div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 thumb mx-auto mt-5">
+					<div class="mt-4"> <a data-fancybox="gallery" href="{{ project_detail.second_image_detail.url }}">
+                        <img class="img-fluid" src="{{ project_detail.second_image_detail_tumb.url }}" alt="...">
+                    </a> </div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 thumb mx-auto mt-5">
+					<div class="mt-4"> <a data-fancybox="gallery" href="{{ project_detail.third_image_detail.url }}">
+                        <img class="img-fluid" src="{{ project_detail.third_image_detail_tumb.url }}" alt="...">
+                    </a> </div>
+				</div>
+			</div>
+		</div>
+    <!-- Описание проекта -->
+		<div class="container marketing">
+			<hr class="featurette-divider">
+			<div class="row featurette align-items-center text-center">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">Описание проекта</h2>
+					<p class="lead">{{ project_detail.first_description }}</p>
+				</div>
+				<div class="col-md-5"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.first_description_image.url }}" alt="Generic placeholder image"> </div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette align-items-center text-center">
+				<div class="col-md-7 order-md-2">
+					<h2 class="featurette-heading">Что сделал в этом проекте я</h2>
+					<p class="lead">{{ project_detail.second_description }}</p>
+				</div>
+				<div class="col-md-5 order-md-1"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.second_description_image.url }}" alt="Generic placeholder image"> </div>
+			</div>
+			<hr class="featurette-divider">
+			<div class="row featurette align-items-center text-center">
+				<div class="col-md-7">
+					<h2 class="featurette-heading">Стек технологий</h2>
+					<p class="lead">{{ project_detail.stack }}</p>
+				</div>
+				<div class="col-md-5"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.stack_image1.url }}" alt="Generic placeholder image"> </div>
+			</div>
+			<hr class="featurette-divider">
+
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script>
+		window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+		</script>
+		<script src="{% static 'portfolio/js/popper.min.js' %}"></script>
+		<script src="{% static 'portfolio/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
