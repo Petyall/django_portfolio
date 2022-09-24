@@ -1,131 +1,94 @@
+{% extends 'base_page.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Petyal</title>
-        <!-- Иконка-->
-        <link rel="icon" href="{% static 'portfolio/Logo.png' %}" />
-        <!-- Подгрузка звездочек-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Гугл шрифты-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- CSS и Bootstrap-->
-        <link href="{% static 'portfolio/styles.css' %}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Навигационная панель-->
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="/">Petyal</a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Меню
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Работы</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Обо мне</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Связаться со мной</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Заголовок-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Аватарка-->
-                <img class="masthead-avatar mb-5" src="{% static 'portfolio/avataaars.svg'%}" alt="..." />
-                <!-- Текст-->
-                <h1 class="masthead-heading text-uppercase mb-0">Привет, меня зовут Пётр!</h1>
-                <!-- Звездочка-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Текст 2-->
-                <p class="masthead-subheading font-weight-light mb-0">Python-разработчик</p>
-            </div>
-        </header>
-        <!-- Работы-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Заголовок-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Мои работы</h2>
-                <!-- Звездочка-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <div class="row justify-content-center text-center">
-                    <!-- Загрузка проектов-->
-                    {% for project in projects %}
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+{% block title %} 
+Портфолио | Petyal
+{% endblock title %} 
 
-                            <img class="img-fluid" src="{{ project.header_image.url }}" alt="..." />
-                            <a href="{% url 'detail' project.id %}"><h4 class="card-title">{{ project.header }}</h4></a> 
-                        </div>
-                    </div>
-                    {% endfor %}     
+{% block container %}
+<!-- Заголовок-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Аватарка-->
+        <img class="masthead-avatar mb-5" src="{% static 'portfolio/avataaars.svg'%}" alt="..." />
+        <!-- Текст-->
+        <h1 class="masthead-heading text-uppercase mb-0">Привет, меня зовут Пётр!</h1>
+        <!-- Звездочка-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Текст 2-->
+        <p class="masthead-subheading font-weight-light mb-0">Python-разработчик</p>
+    </div>
+</header>
+<!-- Работы-->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Заголовок-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Мои работы</h2>
+        <!-- Звездочка-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row justify-content-center text-center">
+            <!-- Загрузка проектов-->
+            {% for project in projects %}
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+
+                    <a href="{% url 'detail' project.id %}"><img class="img-fluid" src="{{ project.header_image.url }}" alt="..." /></a>
+                    <div class="my-3">
+                        <a href="{% url 'detail' project.id %}"><h4 class="card-title">{{ project.header }}</h4></a>
+                    </div> 
+                </div>
             </div>
-        </section>
-        <!-- Обо мне-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
-            <div class="container">
-                <!-- Заголовок-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">Обо мне</h2>
-                <!-- Звездочка-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Текст-->
-                <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Я – начинающий Python-разработчик. В данный момент активно изучаю Selenium и Django. До этого занимался написанием ботов и хорошо знаю библиотеку PyTelegramBotApi. Также имею начальные знания о C#, HTML и CSS.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">·Закончил первый курс информационной безопасности в Донском государственном техническом университете<br>·Принимал участие в Хакатон Spring 2022 | Ростов-на-Дону<br>·Прохожу обучение в онлайн школе Яндекс.Практикум (Python-разработчик)</p></div>
-                </div>
-            </div>
-        </section>
-        <section class="page-section" id="contact">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Связаться со мной</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <div class="container px-4 px-lg-5 text-center">
-                    <ul class="list-inline mb-5">
-                        <li class="list-inline-item">
-                            <a class="social-link rounded-circle text-secondary mr-3" href="https://t.me/petyal"><i class="fa-brands fa-telegram fa-6x"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="social-link rounded-circle text-secondary mr-3" href="https://github.com/Petyall"><i class="fa-brands fa-github fa-6x"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="social-link rounded-circle text-secondary" href="https://vk.com/id_petyal"><i class="fa-brands fa-vk fa-6x"></i></a>
-                        </li>
-                    </ul>
-                </div>
-        </section>
-        <footer class="footer text-center">
-            <div class="container px-4 px-lg-5">
-                <p class="text-muted small mb-0">Дизайн был взят с сайта startbootstrap и доработан</p>
-            </div>
-        </footer>
-        <!-- Остальное-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{% static 'portfolio/js/scripts.js'%}"></script>
-    </body>
-</html>
+            {% endfor %}     
+    </div>
+</section>
+<!-- Обо мне-->
+<section class="page-section bg-primary text-white mb-0" id="about">
+    <div class="container">
+        <!-- Заголовок-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">Обо мне</h2>
+        <!-- Звездочка-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Текст-->
+        <div class="row">
+            <div class="col-lg-4 ms-auto"><p class="lead">Я – начинающий Python-разработчик. В данный момент активно изучаю Selenium и Django. До этого занимался написанием ботов и хорошо знаю библиотеку PyTelegramBotApi. Также имею начальные знания о C#, HTML и CSS.</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">·Закончил первый курс информационной безопасности в Донском государственном техническом университете<br>·Принимал участие в Хакатон Spring 2022 | Ростов-на-Дону<br>·Прохожу обучение в онлайн школе Яндекс.Практикум (Python-разработчик)</p></div>
+        </div>
+    </div>
+</section>
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Связаться со мной</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="container px-4 px-lg-5 text-center">
+            <ul class="list-inline mb-5">
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-secondary mr-3" href="https://t.me/petyal"><i class="fa-brands fa-telegram fa-6x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-secondary mr-3" href="https://github.com/Petyall"><i class="fa-brands fa-github fa-6x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="social-link rounded-circle text-secondary" href="https://vk.com/id_petyal"><i class="fa-brands fa-vk fa-6x"></i></a>
+                </li>
+            </ul>
+        </div>
+</section>
+{% endblock container %}

@@ -71,6 +71,12 @@
 				</div>
 			</div>
 		</div>
+
+		{% if project_detail.link %}
+		<center><button type="button" class="btn btn-link"><a href="{{ project_detail.link }}"><h1>GitHub</h1></a></button></center>
+		{% elif project_detail.link_site %}
+		<center><button type="button" class="btn btn-link"><a href="{{ project_detail.link_site }}"><h1>Ссылка на проект</h1></a></button></center>
+		{% endif %}
     <!-- Описание проекта -->
 		<div class="container marketing">
 			<hr class="featurette-divider">
@@ -98,6 +104,8 @@
 				<div class="col-md-5"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.stack_image1.url }}" alt="Generic placeholder image"> </div>
 			</div>
 			<hr class="featurette-divider">
+
+
 
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
