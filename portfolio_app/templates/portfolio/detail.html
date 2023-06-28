@@ -85,7 +85,7 @@
 					<h2 class="featurette-heading">Описание проекта</h2>
 					<p class="lead">{{ project_detail.first_description }}</p>
 				</div>
-				<div class="col-md-5"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.first_description_image.url }}" alt="Generic placeholder image"> </div>
+				<div class="col-md-5"> <img class="featurette-image img-fluid mx-auto" src="{% static 'portfolio/Idea.jpg' %}" alt="Generic placeholder image"> </div>
 			</div>
 			<hr class="featurette-divider">
 			<div class="row featurette align-items-center text-center">
@@ -93,7 +93,7 @@
 					<h2 class="featurette-heading">Что сделал в этом проекте я</h2>
 					<p class="lead">{{ project_detail.second_description }}</p>
 				</div>
-				<div class="col-md-5 order-md-1"> <img class="featurette-image img-fluid mx-auto" src="{{ project_detail.second_description_image.url }}" alt="Generic placeholder image"> </div>
+				<div class="col-md-5 order-md-1"> <img class="featurette-image img-fluid mx-auto" src="{% static 'portfolio/Code.jpg' %}" alt="Generic placeholder image"> </div>
 			</div>
 			<hr class="featurette-divider">
 			<div class="row featurette align-items-center text-center">
